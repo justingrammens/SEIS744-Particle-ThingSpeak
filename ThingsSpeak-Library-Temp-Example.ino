@@ -12,12 +12,13 @@ void setup() {
 
 void loop() {
 
+// To make it easy, let's create some random temps
 String temp = String(random(60, 80));
 
 Serial.printlnf("Temp: ", temp);
 
-// Write to ThingSpeak, field 1, immediately
+// Using the Library, write to ThingSpeak, field 1, immediately
 ThingSpeak.writeField(myChannelNumber, 1, temp, myWriteAPIKey);
-delay(20000); // ThingSpeak will only accept updates every 15 seconds.
+delay(20000); // ThingSpeak will only accept updates every 15 seconds, let's make a 20 second delay to be safe
 
 }

@@ -10,14 +10,15 @@ void loop() {
   //turning on the LED so we know when it has published!
   digitalWrite(led, HIGH);   // Turn ON the LED
 
-  // create some random temps
+  // To make it easy, let's create some random temps
   String temp = String(random(60, 80));
   Particle.publish("temp", temp, PRIVATE);
   
-  delay(30000);               // Wait for 30 seconds
+  delay(20000);               // Wait for 20 seconds
 
   digitalWrite(led, LOW);    // Turn OFF the LED
-  delay(30000);               // Wait for 30 seconds
+
+  delay(20000);               // Wait for 20 seconds
 }
 
 
@@ -26,5 +27,6 @@ void myHandler(const char *event, const char *data) {
   Serial.println(event);
   Serial.println(data);
     
+  // shows and example of publishing the response message to Particle cloud. You can see it in the Particle Console in your web browser.
   Particle.publish("GotIt", String(data));
 }
